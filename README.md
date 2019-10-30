@@ -1,6 +1,5 @@
 # 汎用版FizzBuzz問題　　
 ### リンク：https://hisapon007.s3-ap-northeast-1.amazonaws.com/FizzBuzz.html
-
 #### 使用言語：HTML+JavaScript
 #### 表示・設定方法：Webブラウザ上で設定・表示可能
 
