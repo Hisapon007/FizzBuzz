@@ -6,63 +6,60 @@
 </head>
 <body>
   <form name="form1" action="#" id="form1">
-      <h1>汎用版FizzBuzz問題</h1><h3>*印のついた項目は必須項目です。</h3><hr>
-    【A】開始する数字*：<input type="text" id="FromNum" name="FromNum" value=""><br>
-    【B】終了する数字*：<input type="text" id="ToNum" name="ToNum" value=""><br>
-    【C】倍数①*：<input type="text" id="Multiple1" name="Multiple1" value=""><br>
-    【D】倍数②*：<input type="text" id="Multiple2" name="Multiple2" value=""><br>
-    【E】倍数①時の表示文言*：<input type="text" id="Multiple1_text" name="Multiple1_text" value=""><br>
-    【F】倍数②時の表示文言*：<input type="text" id="Multiple2_text" name="Multiple2_text" value=""><br>
-    【G】倍数①＆②時の表示文言*：<input type="text" id="Multiple3_text" name="Multiple3_text" value=""><br>
-    <input type="button" onclick="func1()" value="実行">
+      <h1>汎用版FizzBuzz問題</h1><h3>*印のついた項目は必須項目です。</h3><hr>  <!--トップページのヘッダー部分の表示-->
+      【A】開始する数字*：<input type="text" id="FromNum" name="FromNum" value=""><br><!--開始する数字を入力させるフォームを実装-->
+      【B】終了する数字*：<input type="text" id="ToNum" name="ToNum" value=""><br><!--終了する数字を入力させるフォームを実装-->
+      【C】倍数①*：<input type="text" id="Multiple1" name="Multiple1" value=""><br><!--倍数1を入力させるフォームを実装-->
+      【D】倍数②*：<input type="text" id="Multiple2" name="Multiple2" value=""><br><!--倍数2を入力させるフォームを実装-->
+      【E】倍数①時の表示文言*：<input type="text" id="Multiple1_text" name="Multiple1_text" value=""><br><!--倍数１で割り切れるときの文言を入力させるフォームを実装-->
+      【F】倍数②時の表示文言*：<input type="text" id="Multiple2_text" name="Multiple2_text" value=""><br><!--倍数２で割り切れるときの文言を入力させるフォームを実装-->
+      【G】倍数①＆②時の表示文言*：<input type="text" id="Multiple3_text" name="Multiple3_text" value=""><br><!--倍数１と倍数２で割り切れるときの文言を入力させるフォームを実装-->
+      <input type="button" onclick="func1()" value="実行"><!--実行ボタンを実装--><!--実行ボタンを押すと関数func1が実行される-->
   </form>
 
   <script language="javascript" type="text/javascript">
 
-    function func1() {
+    function func1() {/*関数fanc1の実装*/
         if(document.form1.FromNum.value == "" || document.form1.ToNum.value == "" || document.form1.Multiple1.value == ""
            || document.form1.Multiple2.value == "" || document.form1.Multiple1_text.value == "" || document.form1.Multiple2_text.value == ""
            || document.form1.Multiple3_text.value == ""){
-          alert("必須項目を入力して下さい。");
-	        return false;
+          alert("必須項目を入力して下さい。");/*もし、もし、どれか一つでも項目が入力されていなかった場合には「必須項目を入力してください。」と表示*/
+	        return false;/*return falseでプログラム終了*/
         }
            
-        var FromNum = document.getElementById("FromNum").value;
-        var ToNum = document.getElementById("ToNum").value;       
-        var Multiple1 = document.getElementById("Multiple1").value;
-        var Multiple2 = document.getElementById("Multiple2").value;
+        var FromNum = document.getElementById("FromNum").value;/*変数FromNumには、開始する数字を代入*/
+        var ToNum = document.getElementById("ToNum").value;/*変数ToNumには、終了する数字を代入*/       
+        var Multiple1 = document.getElementById("Multiple1").value;/*変数Multiple1には、倍数１を代入*/
+        var Multiple2 = document.getElementById("Multiple2").value;/*変数Multiple2には、倍数２を代入*/
 
-        if (Number.isInteger(parseFloat(FromNum)) != true || Number.isInteger(parseFloat(ToNum)) != true || Number.isInteger(parseFloat(Multiple1)) != true || Number.isInteger(parseFloat(Multiple2)) != true) {
-          alert("項目A～Dは整数で入力してください。");
-          return false;
+        if (Number.isInteger(parseFloat(FromNum)) != true || Number.isInteger(parseFloat(ToNum)) != true || Number.isInteger(parseFloat(Multiple1)) != true 
+            || Number.isInteger(parseFloat(Multiple2)) != true) {
+          alert("項目A～Dは整数で入力してください。");/*もし、開始・終了する数字および倍数に整数以外が入力された場合は、「項目A～Dは整数で入力してください。」と表示*/
+          return false;/*return falseでプログラム終了*/
         }
         
         if(FromNum > ToNum){
-          alert("項目Bは項目Aより大きい値を入力してください。")
-          return false;
+          alert("項目Bは項目Aより大きい値を入力してください。")/*もし、開始する数字のほうが終了する数字よりも大きかった場合は「項目Bは項目Aより大きい値を入力してください。」と表示*/
+          return false;/*return falseでプログラム終了*/
         }
 
-        var Multiple1_text = document.getElementById("Multiple1_text").value;
-        var Multiple2_text = document.getElementById("Multiple2_text").value;
-        var Multiple3_text = document.getElementById("Multiple3_text").value;
+        var Multiple1_text = document.getElementById("Multiple1_text").value;/*変数Multiple1_textには、倍数1で割り切れるときに表示させる文言を代入*/
+        var Multiple2_text = document.getElementById("Multiple2_text").value;/*変数Multiple2_textには、倍数2で割り切れるときに表示させる文言を代入*/
+        var Multiple3_text = document.getElementById("Multiple3_text").value;/*変数Multiple3_textには、倍数1と倍数2で割り切れるときに表示させる文言を代入*/
 
-        
-
-        for (FromNum; FromNum <= ToNum; FromNum++) {
-            if (FromNum % Multiple1 === 0 && FromNum % Multiple2 === 0) {
-                document.write(Multiple3_text + "<br />");
-            } else if (FromNum % Multiple1 === 0) {
-                document.write(Multiple1_text + "<br />");
-            } else if (FromNum % Multiple2 === 0) {
-                document.write(Multiple2_text + "<br />");
-            } else {
-                document.write(FromNum + "<br />"); 
+        for (FromNum; FromNum <= ToNum; FromNum++) {/*初期値がFromNumで、FromNumがToNum以下までFromNumをインクリメントする*/
+            if (FromNum % Multiple1 === 0 && FromNum % Multiple2 === 0) {/*倍数1と倍数2の両方で割り切れた場合*/
+                document.write(Multiple3_text + "<br />");/*項目Gで指定した文言を表示*/
+            } else if (FromNum % Multiple1 === 0) {/*倍数1で割り切れた場合*/
+                document.write(Multiple1_text + "<br />");/*項目Eで指定した文言を表示*/
+            } else if (FromNum % Multiple2 === 0) {/*倍数2で割り切れた場合*/
+                document.write(Multiple2_text + "<br />");/*項目Fで指定した文言を表示*/
+            } else {/*それ以外の場合*/
+                document.write(FromNum + "<br />"); /*FromNumを表示*/
             }
         }
-        document.write("<p><a href=\"FizzBuzz.html\">トップページへ戻る</a></p>");
+        document.write("<p><a href=\"FizzBuzz.html\">トップページへ戻る</a></p>");/*結果画面の最下部にトップページへ戻るボタンを配置*/
     }
   </script>
-
-
 </body>
 </html>
