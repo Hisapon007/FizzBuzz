@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>FizzBuzz</title>
+</head>
+<body>
+  <form name="form1" action="#" id="form1">
+      <h1>汎用版FizzBuzz問題</h1><h3>*印のついた項目は必須項目です。</h3><hr>
+    【A】開始する数字*：<input type="text" id="FromNum" name="FromNum" value=""><br>
+    【B】終了する数字*：<input type="text" id="ToNum" name="ToNum" value=""><br>
+    【C】倍数①*：<input type="text" id="Multiple1" name="Multiple1" value=""><br>
+    【D】倍数②*：<input type="text" id="Multiple2" name="Multiple2" value=""><br>
+    【E】倍数①時の表示文言*：<input type="text" id="Multiple1_text" name="Multiple1_text" value=""><br>
+    【F】倍数②時の表示文言*：<input type="text" id="Multiple2_text" name="Multiple2_text" value=""><br>
+    【G】倍数①＆②時の表示文言*：<input type="text" id="Multiple3_text" name="Multiple3_text" value=""><br>
+    <input type="button" onclick="func1()" value="実行">
+  </form>
+
+  <script language="javascript" type="text/javascript">
+
+    function func1() {
+        if(document.form1.FromNum.value == "" || document.form1.ToNum.value == "" || document.form1.Multiple1.value == ""
+           || document.form1.Multiple2.value == "" || document.form1.Multiple1_text.value == "" || document.form1.Multiple2_text.value == ""
+           || document.form1.Multiple3_text.value == ""){
+          alert("必須項目を入力して下さい。");
+	        return false;
+        }
+           
+        var FromNum = document.getElementById("FromNum").value;
+        var ToNum = document.getElementById("ToNum").value;       
+        var Multiple1 = document.getElementById("Multiple1").value;
+        var Multiple2 = document.getElementById("Multiple2").value;
+
+        if (Number.isInteger(parseFloat(FromNum)) != true || Number.isInteger(parseFloat(ToNum)) != true || Number.isInteger(parseFloat(Multiple1)) != true || Number.isInteger(parseFloat(Multiple2)) != true) {
+          alert("項目A～Dは整数で入力してください。");
+          return false;
+        }
+        
+        if(FromNum > ToNum){
+          alert("項目Bは項目Aより大きい値を入力してください。")
+          return false;
+        }
+
+        var Multiple1_text = document.getElementById("Multiple1_text").value;
+        var Multiple2_text = document.getElementById("Multiple2_text").value;
+        var Multiple3_text = document.getElementById("Multiple3_text").value;
+
+        
+
+        for (FromNum; FromNum <= ToNum; FromNum++) {
+            if (FromNum % Multiple1 === 0 && FromNum % Multiple2 === 0) {
+                document.write(Multiple3_text + "<br />");
+            } else if (FromNum % Multiple1 === 0) {
+                document.write(Multiple1_text + "<br />");
+            } else if (FromNum % Multiple2 === 0) {
+                document.write(Multiple2_text + "<br />");
+            } else {
+                document.write(FromNum + "<br />"); 
+            }
+        }
+        document.write("<p><a href=\"FizzBuzz.html\">トップページへ戻る</a></p>");
+    }
+  </script>
+
+
+</body>
+</html>
